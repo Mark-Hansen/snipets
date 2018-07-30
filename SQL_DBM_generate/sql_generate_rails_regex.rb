@@ -76,8 +76,11 @@ add_foreign_key 'normalised_business_objects_and_events.$1', 'normalised_busines
 \n\n *add_
 \n    end\n    add_
 
-      add_
+ *add_
     add_
+
+-- \** *`(\w+) *.*`\n
+    # $1\n
 
 class NormalisedBusinessObjectsAndEvents
 # Need to select and Initcap next ([\w]*) word and trim the space before it (between it and events)
