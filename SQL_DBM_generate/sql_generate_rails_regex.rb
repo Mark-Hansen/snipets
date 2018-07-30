@@ -13,10 +13,10 @@
 t.NOT
 t.integer
 
-CREATE TABLE *`([\w]*)`
+CREATE TABLE *`(\w+)`
     create_table 'normalised_business_objects_and_events.$1' do |t|
 
-CREATE TABLE *`([\w]*) *\(\w*\)`
+CREATE TABLE *`(\w+) *\((\w+)\)`
     create_view 'normalised_business_objects_and_events.$1'
 
 VARCHAR\(255\)
