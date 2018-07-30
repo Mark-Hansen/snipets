@@ -43,7 +43,7 @@ ALTER TABLE `sales_regions`
 
 
 ALTER TABLE `contacts`
- ADD UNIQUE KEY `contacts-uidx_contact_hash_natural_key` (`contact_hash_natural_key`);
+ ADD UNIQUE KEY `uidx_contact_hash_natural_key` (`contact_hash_natural_key`);
 
 ALTER TABLE `contacts`
  ADD KEY `fkIdx_932` (`source_id`),
@@ -222,7 +222,7 @@ ALTER TABLE `addresses`
 
 
 ALTER TABLE `sales`
- ADD UNIQUE KEY `sales-uidx_sale_reference_natural_key` (`sale_reference_natural_key`);
+ ADD UNIQUE KEY `uidx_sale_reference_natural_key` (`sale_reference_natural_key`);
 
 ALTER TABLE `sales`
  ADD KEY `fkIdx_292` (`shipping_address_id`),
@@ -273,7 +273,7 @@ ALTER TABLE `reconciliations`
 
 
 ALTER TABLE `shipments`
- ADD UNIQUE KEY `shipments-uidx_shipment_reference_natural_key` (`shipment_reference_natural_key`);
+ ADD UNIQUE KEY `uidx_shipment_reference_natural_key` (`shipment_reference_natural_key`);
 
 ALTER TABLE `shipments`
  ADD KEY `fkIdx_554` (`shipping_carrier_contact_id`),
