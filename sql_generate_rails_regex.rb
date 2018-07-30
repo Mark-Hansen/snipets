@@ -68,7 +68,7 @@ add_foreign_key 'normalised_business_objects_and_events.$1', 'normalised_busines
   end\n\n
 
 \n\n\n
-\n\nß
+\n\n
 
 \n\n *add_
 \n    end\n    add_
