@@ -37,6 +37,9 @@ decimal$3, :precision => $1, :scale => $2\n
 t.INT\d+
 t.integer
 
+PRIMARY KEY \(`id`.*\n
+<<empty string>>
+
 PRIMARY KEY \(`id`\),\n
 <<empty string>>
 
@@ -46,13 +49,13 @@ PRIMARY KEY \(`id`, `item_type_id`\),\n
 PRIMARY KEY \(`id`\)\n
 <<empty string>>
 
- *KEY.*\n *CONSTRAINT.*FOREIGN KEY *`fkIdx_\d+` \(`(\w+)`\) *REFERENCES *`(\w+)`.*
-      add_foreign_key 'normalised_business_objects_and_events.<<table_name>>', 'normalised_business_objects_and_events.$2', column: :$1, name: 'fk_$2_on_$1'
+ *ALTER TABLE *`(\w+) *.*`\n *ADD KEY.*\n *ADD CONSTRAINT.*FOREIGN KEY *`fkIdx_\d+` \(`(\w+)`\) *REFERENCES *`(\w+)`.*
+      add_foreign_key 'normalised_business_objects_and_events.$1', 'normalised_business_objects_and_events.$3', column: :$2, name: 'fk_$3_on_$2'
 
-UNIQUE *KEY.*`(\w+)-uidx_(\w+)` *\(`(\w+)`, *`(\w+)`\),
-      add_index :$1, [:$3, :$4], name: 'uidx$2', unique: true
+ *ALTER TABLE *`(\w+) *.*`\n *ADD UNIQUE *KEY.*`uidx_\w+` *\(`(\w+)`, *`(\w+)`\);
+      add_index :$1, [:$2, :$2], name: 'uidx$2', unique: true
 
-UNIQUE *KEY.*`(\w+)-uidx_(\w+)` *\(`(\w+)`\),
+ *ALTER TABLE *`(\w+) *.*`\n *ADD UNIQUE *KEY.*`uidx_\w+` *\(`(\w+)`\);
       add_index 'normalised_business_objects_and_events.$1', :$3, name: 'uidx_$1_on_$2', unique: true
 
 KEY.*`(\w+)` *\(`(\w+)`\),

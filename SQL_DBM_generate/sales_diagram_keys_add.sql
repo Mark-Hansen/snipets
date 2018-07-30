@@ -284,9 +284,6 @@ ALTER TABLE `shipments`
  ADD CONSTRAINT `FK_558` FOREIGN KEY `fkIdx_558` (`warehouse_id`) REFERENCES `warehouses` (`id`);
 
 ALTER TABLE `shipments`
- ADD KEY `idx_shipment_reference_natural_key` (`shipment_reference_natural_key`);
-
-ALTER TABLE `shipments`
  ADD KEY `fkIdx_1108` (`source_id`),
  ADD CONSTRAINT `FK_1108` FOREIGN KEY `fkIdx_1108` (`source_id`) REFERENCES `sources` (`id`);
 
