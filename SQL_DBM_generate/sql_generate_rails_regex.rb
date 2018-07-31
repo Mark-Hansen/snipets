@@ -28,6 +28,9 @@ string$2, :limit => $1\n
 TIMESTAMP
 timestamp
 
+BOOLEAN
+boolean
+
 NUMERIC\((\d+),(\d+)\)(.*)\n
 decimal$3, :precision => $1, :scale => $2\n
 
