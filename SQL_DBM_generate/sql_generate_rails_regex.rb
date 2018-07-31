@@ -20,11 +20,13 @@ CREATE TABLE *`(\w+)`
 
 # Set Null(able) and Not Null
 
-, *NOT NULL ,
+, *NOT NULL *,|, *NULL *,
 , null: false
 
 , *,\n
 , null: true\n
+
+, NULL ,
 
 # set data types in create_table
 
@@ -36,6 +38,8 @@ string$2, :limit => $1\n
 
 TIMESTAMP
 timestamp
+
+t.column :created_at, :timestamptz, null: false
 
 BOOLEAN
 boolean
