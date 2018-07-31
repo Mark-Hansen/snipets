@@ -1,6 +1,84 @@
 -- ****************** SqlDBM: MySQL ******************;
 -- ***************************************************;
 
+DROP TABLE `shipment_line_items`;
+
+
+DROP TABLE `reconciliations`;
+
+
+DROP TABLE `shipments`;
+
+
+DROP TABLE `inventory_items`;
+
+
+DROP TABLE `freight_charges`;
+
+
+DROP TABLE `warehouses`;
+
+
+DROP TABLE `sales`;
+
+
+DROP TABLE `addresses`;
+
+
+DROP TABLE `exchange_rates`;
+
+
+DROP TABLE `purchase_line_items`;
+
+
+DROP TABLE `purchases`;
+
+
+DROP TABLE `charges`;
+
+
+DROP TABLE `payments`;
+
+
+DROP TABLE `merchandising_products`;
+
+
+DROP TABLE `countries`;
+
+
+DROP TABLE `taxes`;
+
+
+DROP TABLE `products (kaos_product_products)`;
+
+
+DROP TABLE `promotions (kaos_sales_promotions)`;
+
+
+DROP TABLE `sale_line_items`;
+
+
+DROP TABLE `currencies`;
+
+
+DROP TABLE `sales_regions`;
+
+
+DROP TABLE `charge_types`;
+
+
+DROP TABLE `promotion_types`;
+
+
+DROP TABLE `payment_types`;
+
+
+DROP TABLE `contacts`;
+
+
+DROP TABLE `channels`;
+
+
 
 -- ************************************** `currencies`
 
@@ -12,30 +90,10 @@ CREATE TABLE `currencies`
  `created_at`    TIMESTAMP NOT NULL ,
  `updated_at`    TIMESTAMP NOT NULL ,
  `deleted_at`    TIMESTAMP ,
-
--- SKIP: `PRIMARY
-);
-
-
-
-
-
--- ************************************** `exchange_rates`
-
-CREATE TABLE `exchange_rates`
-(
- `id`               INT4 NOT NULL ,
- `exchange_rate`    NUMERIC(36,15) NOT NULL ,
- `from_currency_id` INT4 NOT NULL ,
- `to_currency_id`   INT4 NOT NULL ,
- `applicable_on`    DATE NOT NULL ,
- `created_at`       TIMESTAMP NOT NULL ,
- `updated_at`       TIMESTAMP NOT NULL ,
- `deleted_at`       TIMESTAMP ,
+ `source_id`     INT4 NOT NULL ,
 
 -- SKIP: `PRIMARY`
--- SKIP: `fkIdx_1897`
--- SKIP: `fkIdx_1901
+-- SKIP: `fkIdx_2008
 );
 
 
@@ -64,6 +122,64 @@ CREATE TABLE `sales_regions`
 
 
 
+-- ************************************** `charge_types`
+
+CREATE TABLE `charge_types`
+(
+ `id`           NOT NULL ,
+ `charge_type` VARCHAR(45) NOT NULL ,
+ `created_at`  TIMESTAMP NOT NULL ,
+ `updated_at`  TIMESTAMP NOT NULL ,
+ `deleted_at`  TIMESTAMP ,
+ `source_id`   INT4 NOT NULL ,
+
+-- SKIP: `PRIMARY`
+-- SKIP: `fkIdx_2000
+);
+
+
+
+
+
+-- ************************************** `promotion_types`
+
+CREATE TABLE `promotion_types`
+(
+ `id`                    INT4 NOT NULL ,
+ `promotion_type`        VARCHAR(45) NOT NULL ,
+ `is_single_valued_only` BOOLEAN NOT NULL ,
+ `created_at`            TIMESTAMP NOT NULL ,
+ `updated_at`            TIMESTAMP NOT NULL ,
+ `deleted_at`            TIMESTAMP ,
+ `source_id`             INT4 NOT NULL ,
+
+-- SKIP: `PRIMARY`
+-- SKIP: `fkIdx_1699
+);
+
+
+
+
+
+-- ************************************** `payment_types`
+
+CREATE TABLE `payment_types`
+(
+ `id`            NOT NULL ,
+ `payment_type` VARCHAR(45) NOT NULL ,
+ `created_at`   TIMESTAMP NOT NULL ,
+ `updated_at`   TIMESTAMP NOT NULL ,
+ `deleted_at`   TIMESTAMP ,
+ `source_id`    INT4 NOT NULL ,
+
+-- SKIP: `PRIMARY`
+-- SKIP: `fkIdx_2041
+);
+
+
+
+
+
 -- ************************************** `contacts`
 
 CREATE TABLE `contacts`
@@ -78,7 +194,7 @@ CREATE TABLE `contacts`
  `source_id`                INT4 NOT NULL ,
 
 -- SKIP: `PRIMARY`
--- SKIP: `contacts-uidx_contact_hash_natural_key`
+-- SKIP: `uidx_contact_hash_natural_key`
 -- SKIP: `fkIdx_932
 );
 
@@ -102,6 +218,30 @@ CREATE TABLE `channels`
 -- SKIP: `PRIMARY`
 -- SKIP: `fkIdx_1600`
 -- SKIP: `fkIdx_1659
+);
+
+
+
+
+
+-- ************************************** `exchange_rates`
+
+CREATE TABLE `exchange_rates`
+(
+ `id`               INT4 NOT NULL ,
+ `exchange_rate`    NUMERIC(36,15) NOT NULL ,
+ `from_currency_id` INT4 NOT NULL ,
+ `to_currency_id`   INT4 NOT NULL ,
+ `applicable_on`    DATE NOT NULL ,
+ `created_at`       TIMESTAMP NOT NULL ,
+ `updated_at`       TIMESTAMP NOT NULL ,
+ `deleted_at`       TIMESTAMP ,
+ `source_id`        INT4 NOT NULL ,
+
+-- SKIP: `PRIMARY`
+-- SKIP: `fkIdx_1897`
+-- SKIP: `fkIdx_1901`
+-- SKIP: `fkIdx_2004
 );
 
 
@@ -238,6 +378,28 @@ CREATE TABLE `merchandising_products`
 
 
 
+-- ************************************** `countries`
+
+CREATE TABLE `countries`
+(
+ `id`                 INT4 NOT NULL ,
+ `country`            VARCHAR(100) NOT NULL ,
+ `sales_region_id`    INT4 NOT NULL ,
+ `created_at`         TIMESTAMP NOT NULL ,
+ `updated_at`         TIMESTAMP NOT NULL ,
+ `deleted_at`         TIMESTAMP ,
+ `source_primary_key` VARCHAR(45) ,
+ `source_id`          INT4 NOT NULL ,
+
+-- SKIP: `PRIMARY`
+-- SKIP: `fkIdx_1159`
+-- SKIP: `fkIdx_1651
+);
+
+
+
+
+
 -- ************************************** `taxes`
 
 CREATE TABLE `taxes`
@@ -368,6 +530,30 @@ CREATE TABLE `addresses`
 
 
 
+-- ************************************** `warehouses`
+
+CREATE TABLE `warehouses`
+(
+ `id`                 INT4 NOT NULL ,
+ `warehouse`          VARCHAR(45) NOT NULL ,
+ `contact_id`         INT4 NOT NULL ,
+ `address_id`         INT4 NOT NULL ,
+ `created_at`         TIMESTAMP NOT NULL ,
+ `updated_at`         TIMESTAMP NOT NULL ,
+ `deleted_at`         TIMESTAMP ,
+ `source_primary_key` VARCHAR(45) ,
+ `source_id`          INT4 NOT NULL ,
+
+-- SKIP: `PRIMARY`
+-- SKIP: `fkIdx_318`
+-- SKIP: `fkIdx_1124`
+-- SKIP: `fkIdx_1297
+);
+
+
+
+
+
 -- ************************************** `sales`
 
 CREATE TABLE `sales`
@@ -390,7 +576,7 @@ CREATE TABLE `sales`
  `source_id`                  INT4 NOT NULL ,
 
 -- SKIP: `PRIMARY`
--- SKIP: `sales-uidx_sale_reference_natural_key`
+-- SKIP: `uidx_sale_reference_natural_key`
 -- SKIP: `fkIdx_292`
 -- SKIP: `fkIdx_296`
 -- SKIP: `fkIdx_309`
@@ -444,10 +630,9 @@ CREATE TABLE `shipments`
  `source_id`                      INT4 NOT NULL ,
 
 -- SKIP: `PRIMARY`
--- SKIP: `shipments-uidx_shipment_reference_natural_key`
+-- SKIP: `uidx_shipment_reference_natural_key`
 -- SKIP: `fkIdx_554`
 -- SKIP: `fkIdx_558`
--- SKIP: `idx_shipment_reference_natural_key`
 -- SKIP: `fkIdx_1108
 );
 

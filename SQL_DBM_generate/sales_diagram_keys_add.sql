@@ -1,5 +1,3 @@
-FORWARD ENGINEER
-Selected: 21 table(s)
 -- ****************** SqlDBM: MySQL ******************;
 -- ***************************************************;
 
@@ -8,19 +6,9 @@ Selected: 21 table(s)
 
 
 
-
-
--- ************************************** `exchange_rates`
-
-
-
-ALTER TABLE `exchange_rates`
- ADD KEY `fkIdx_1897` (`from_currency_id`),
- ADD CONSTRAINT `FK_1897` FOREIGN KEY `fkIdx_1897` (`from_currency_id`) REFERENCES `currencies` (`id`);
-
-ALTER TABLE `exchange_rates`
- ADD KEY `fkIdx_1901` (`to_currency_id`),
- ADD CONSTRAINT `FK_1901` FOREIGN KEY `fkIdx_1901` (`to_currency_id`) REFERENCES `currencies` (`id`);
+ALTER TABLE `currencies`
+ ADD KEY `fkIdx_2008` (`source_id`),
+ ADD CONSTRAINT `FK_2008` FOREIGN KEY `fkIdx_2008` (`source_id`) REFERENCES `sources` (`id`);
 
 
 
@@ -35,6 +23,36 @@ ALTER TABLE `sales_regions`
 ALTER TABLE `sales_regions`
  ADD KEY `fkIdx_1655` (`source_id`),
  ADD CONSTRAINT `FK_1655` FOREIGN KEY `fkIdx_1655` (`source_id`) REFERENCES `sources` (`id`);
+
+
+
+-- ************************************** `charge_types`
+
+
+
+ALTER TABLE `charge_types`
+ ADD KEY `fkIdx_2000` (`source_id`),
+ ADD CONSTRAINT `FK_2000` FOREIGN KEY `fkIdx_2000` (`source_id`) REFERENCES `sources` (`id`);
+
+
+
+-- ************************************** `promotion_types`
+
+
+
+ALTER TABLE `promotion_types`
+ ADD KEY `fkIdx_1699` (`source_id`),
+ ADD CONSTRAINT `FK_1699` FOREIGN KEY `fkIdx_1699` (`source_id`) REFERENCES `sources` (`id`);
+
+
+
+-- ************************************** `payment_types`
+
+
+
+ALTER TABLE `payment_types`
+ ADD KEY `fkIdx_2041` (`source_id`),
+ ADD CONSTRAINT `FK_2041` FOREIGN KEY `fkIdx_2041` (`source_id`) REFERENCES `sources` (`id`);
 
 
 
@@ -62,6 +80,24 @@ ALTER TABLE `channels`
 ALTER TABLE `channels`
  ADD KEY `fkIdx_1659` (`source_id`),
  ADD CONSTRAINT `FK_1659` FOREIGN KEY `fkIdx_1659` (`source_id`) REFERENCES `sources` (`id`);
+
+
+
+-- ************************************** `exchange_rates`
+
+
+
+ALTER TABLE `exchange_rates`
+ ADD KEY `fkIdx_1897` (`from_currency_id`),
+ ADD CONSTRAINT `FK_1897` FOREIGN KEY `fkIdx_1897` (`from_currency_id`) REFERENCES `currencies` (`id`);
+
+ALTER TABLE `exchange_rates`
+ ADD KEY `fkIdx_1901` (`to_currency_id`),
+ ADD CONSTRAINT `FK_1901` FOREIGN KEY `fkIdx_1901` (`to_currency_id`) REFERENCES `currencies` (`id`);
+
+ALTER TABLE `exchange_rates`
+ ADD KEY `fkIdx_2004` (`source_id`),
+ ADD CONSTRAINT `FK_2004` FOREIGN KEY `fkIdx_2004` (`source_id`) REFERENCES `sources` (`id`);
 
 
 
@@ -143,6 +179,20 @@ ALTER TABLE `merchandising_products`
 
 
 
+-- ************************************** `countries`
+
+
+
+ALTER TABLE `countries`
+ ADD KEY `fkIdx_1159` (`sales_region_id`),
+ ADD CONSTRAINT `FK_1159` FOREIGN KEY `fkIdx_1159` (`sales_region_id`) REFERENCES `sales_regions` (`id`);
+
+ALTER TABLE `countries`
+ ADD KEY `fkIdx_1651` (`source_id`),
+ ADD CONSTRAINT `FK_1651` FOREIGN KEY `fkIdx_1651` (`source_id`) REFERENCES `sources` (`id`);
+
+
+
 -- ************************************** `taxes`
 
 
@@ -214,6 +264,24 @@ ALTER TABLE `addresses`
 ALTER TABLE `addresses`
  ADD KEY `fkIdx_1253` (`source_id`),
  ADD CONSTRAINT `FK_1253` FOREIGN KEY `fkIdx_1253` (`source_id`) REFERENCES `sources` (`id`);
+
+
+
+-- ************************************** `warehouses`
+
+
+
+ALTER TABLE `warehouses`
+ ADD KEY `fkIdx_318` (`address_id`),
+ ADD CONSTRAINT `FK_318` FOREIGN KEY `fkIdx_318` (`address_id`) REFERENCES `addresses` (`id`);
+
+ALTER TABLE `warehouses`
+ ADD KEY `fkIdx_1124` (`source_id`),
+ ADD CONSTRAINT `FK_1124` FOREIGN KEY `fkIdx_1124` (`source_id`) REFERENCES `sources` (`id`);
+
+ALTER TABLE `warehouses`
+ ADD KEY `fkIdx_1297` (`contact_id`),
+ ADD CONSTRAINT `FK_1297` FOREIGN KEY `fkIdx_1297` (`contact_id`) REFERENCES `contacts` (`id`);
 
 
 
