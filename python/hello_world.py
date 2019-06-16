@@ -1,6 +1,5 @@
 from decimal import *
 
-
 # Resources for More Basic Practice
 # Before you begin your assessment, I wanted to point out some helpful links for practice (don't worry about being able to do these exercises, I just want you to be aware of the links so you can visit them later, since we still haven't discussed functions, you won't be able to utilize a lot of these resources yet!):
 #
@@ -18,7 +17,6 @@ from decimal import *
 #
 # A very tricky website with very few hints and touch problems (Not for beginners but still interesting)
 # http://www.pythonchallenge.com/
-
 
 # my_letters = "Zzz"
 # my_letters = my_letters * 10
@@ -147,7 +145,6 @@ from decimal import *
 #   contents = my_file.read()
 #   print(contents)
 
-
-x = open('/Users/markhansen/Dev/snipets/python/test.txt','w')
-x.write('Hello World')
-x.close()
+# x = open('/Users/markhansen/Dev/snipets/python/test.txt','w')
+# x.write('Hello World')
+# x.close()
