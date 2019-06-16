@@ -18,9 +18,11 @@ update_view 'normalised_business_objects.product_latest_prices',
               say 'Nothing to see here'
             end
 
-# Create a partial index:
-add_index :group_discussions, :column, unique: true, where: "column = 123"
 
-# rspec
-rails db:migrate RAILS_ENV=test
+# RSPEC testing
+RAILS_ENV=test rake db:migrate
 bundle exec rspec spec
+
+# upgrade ruby
+# Siegfried project version is set in bellroy-siegfried/.ruby-version
+$ brew upgrade rbenv
