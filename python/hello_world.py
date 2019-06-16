@@ -148,3 +148,7 @@ from decimal import *
 # x = open('/Users/markhansen/Dev/snipets/python/test.txt','w')
 # x.write('Hello World')
 # x.close()
+
+# x = open('/Users/markhansen/Dev/snipets/python/test.txt','a')
+# x.write('This is the end')
+# x.close()
