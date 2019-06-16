@@ -1,0 +1,17 @@
+# pull a new remote branch
+git checkout --track origin/separate_view_create_into_subdags
+
+
+
+#show git log
+git log --graph --decorate --pretty=oneline --abbrev-commit
+
+#squash after merge
+git rebase i HEAD~n <-- where 'n' is the number of commits
+git rebase -i [SHA] <-- where SHA is the SHA of the commit to squash back to
+
+# force a push to remote branch; this is useful when overwriting commits on squash
+git push origin branchName --force
+
+
+Update invoice load clean_views.invoice_lines to include line totals and unit prices inc and ex tax local currency and aud.

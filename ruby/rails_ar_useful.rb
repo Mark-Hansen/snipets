@@ -15,3 +15,12 @@ update_view 'normalised_business_objects.product_latest_prices',
             def down
               say 'Nothing to see here'
             end
+
+
+# RSPEC testing
+RAILS_ENV=test rake db:migrate
+bundle exec rspec spec
+
+# upgrade ruby
+# Siegfried project version is set in bellroy-siegfried/.ruby-version
+$ brew upgrade rbenv
