@@ -73,17 +73,17 @@ from decimal import *
 # print(my_array[1][0])
 # print('')
 
-# my_countries = {'AU':{'name':'Australia','currency':'AUD'},'US':{'name':'United States of America','currency':'USD'},'NZ':{'name':'New Zealand','currency':'NZD'}}
-# my_countries['UK'] = {'name':'The United Kingdom of Great Britain and Nothern Ireland','currency':'GBP'}
-# print("{} transacts in {}".format(my_countries['AU']['name'],my_countries['AU']['currency']))
-# print("{} transacts in {}".format(my_countries['NZ']['name'],my_countries['NZ']['currency']))
-# print("{} transacts in {}".format(my_countries['US']['name'],my_countries['US']['currency']))
-# print("{} transacts in {}".format(my_countries['UK']['name'],my_countries['UK']['currency']))
-# print('')
-# print(my_countries.keys())
-# print(my_countries.values())
-# print(my_countries.items()) # outputs tuples
-# print('')
+my_countries = {'AU':{'name':'Australia','currency':'AUD'},'US':{'name':'United States of America','currency':'USD'},'NZ':{'name':'New Zealand','currency':'NZD'}}
+my_countries['UK'] = {'name':'The United Kingdom of Great Britain and Nothern Ireland','currency':'GBP'}
+print("{} transacts in {}".format(my_countries['AU']['name'],my_countries['AU']['currency']))
+print("{} transacts in {}".format(my_countries['NZ']['name'],my_countries['NZ']['currency']))
+print("{} transacts in {}".format(my_countries['US']['name'],my_countries['US']['currency']))
+print("{} transacts in {}".format(my_countries['UK']['name'],my_countries['UK']['currency']))
+print('')
+print(my_countries.keys())
+print(my_countries.values())
+print(my_countries.items()) # outputs tuples
+print('')
 
 # my_tuple = (1,2,3,3,3,4,5)
 # my_list = [1,2,3,4,5]
