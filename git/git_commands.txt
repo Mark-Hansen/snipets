@@ -13,5 +13,7 @@ git rebase -i [SHA] <-- where SHA is the SHA of the commit to squash back to
 # force a push to remote branch; this is useful when overwriting commits on squash
 git push origin branchName --force
 
+git pull -r master
+git pull -r origin master
 
 Update invoice load clean_views.invoice_lines to include line totals and unit prices inc and ex tax local currency and aud.
