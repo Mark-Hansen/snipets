@@ -26,3 +26,14 @@ bundle exec rspec spec
 # upgrade ruby
 # Siegfried project version is set in bellroy-siegfried/.ruby-version
 $ brew upgrade rbenv
+
+
+# adding parent records in a RAILS ActiveRecord model
+parent_territory = Live::Maxwell::SalesTerritory.find_or_create(
+  identifier: 'Wholesale',
+)
+
+Live::Maxwell::SalesTerritory.find_or_create(
+  identifier: 'Americas',
+  parent_sales_territory: parent_territory
+)
